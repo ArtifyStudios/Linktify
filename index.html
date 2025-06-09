@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artify Studios - Medialink</title>
+    <meta name="description" content="Creando mundos digitales extraordinarios con precisión técnica y visión artística. Especialistas en modelado 3D, animación, efectos visuales y demás funciones de nivel profesional.">
+    <meta name="keywords" content="diseño, 3D, animación, efectos visuales, branding, UI/UX, cursos de diseño">
+    <meta name="author" content="Artify Studios">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Artify Studios - Medialink">
+    <meta property="og:description" content="Creando mundos digitales extraordinarios con precisión técnica y visión artística.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://artifystudios.com">
+    <meta property="og:image" content="/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Artify Studios - Medialink">
+    <meta name="twitter:description" content="Creando mundos digitales extraordinarios con precisión técnica y visión artística.">
+    <meta name="twitter:image" content="/og-image.jpg">
+    
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <!-- Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button id="languageBtn" class="language-btn">
+                <i class="fas fa-globe"></i>
+                <span id="currentLang">ES</span>
+            </button>
+        </div>
+
+        <!-- Profile Section -->
+        <header class="profile-section">
+            <div class="profile-image">
+                <img src="img/Artify Studios.png" alt="Artify Studios" id="profileImg">
+                
+                <div class="profile-overlay"></div>
+            </div>
+            
+            <div class="profile-content">
+                <h1 class="agency-name" data-es="Artify Studios" data-en="Artify Studios"><a href="https://portafolioartify.netlify.app/" class="Agencia">Artify Studios</a></h1>
+                
+                <p class="agency-description" 
+                   data-es="Creando mundos digitales extraordinarios con precisión técnica y visión artística. Especialistas en modelado 3D, animación, efectos visuales y demás funciones de nivel profesional."
+                   data-en="Creating extraordinary digital worlds with technical precision and artistic vision. Specialists in 3D modeling, animation, visual effects and other professional-level functions.">
+                   Creando mundos digitales extraordinarios con precisión técnica y visión artística. Especialistas en modelado 3D, animación, efectos visuales y demás funciones de nivel profesional.
+                </p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">+40</span>
+                        <span class="stat-label" data-es="Proyectos" data-en="Projects">Proyectos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+50</span>
+                        <span class="stat-label" data-es="Clientes" data-en="Clients">Clientes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label" data-es="Años" data-en="Years">Años</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sponsor Video Section -->
+        <section class="sponsor-video-section" id="sponsorSection">
+            <div class="sponsor-card">
+                <div class="sponsor-badge">
+                    <i class="fas fa-bullhorn"></i>
+                    <span data-es="Patrocinado" data-en="Sponsored">Patrocinado</span>
+                </div>
+                
+                <div class="sponsor-video-container">
+                    <video id="sponsorVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1542744173-8659d8bde7ef?w=800&h=450&fit=crop">
+                        <source src="Video/Xencelabs Pen Display 16 x Tony Bancroft _ Inspiration is Everywhere  _.mp4" type="video/mp4">
+                    </video>
+                    
+                    <div class="sponsor-overlay">
+                        <div class="sponsor-info">
+                            <img src="img/Xencelabs.png" alt="Xencelabs" class="sponsor-logo">
+                            <div class="sponsor-text">
+                                <h3 data-es="Xencelabs" data-en="Xencelabs">Xencelabs</h3>
+                                <p data-es="Desbloquea tu creatividad con la mejor herramienta de diseño." data-en="Unlock your creativity with the best design tool.">Desbloquea tu creatividad con la mejor herramienta de diseño.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sponsor-controls">
+                            <button id="sponsorMuteBtn" class="sponsor-btn">
+                                <i class="fas fa-volume-mute"></i>
+                            </button>
+                            <button id="sponsorCloseBtn" class="sponsor-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.xencelabs.com/es/store/pen-display/xencelabs-pen-display-16" class="sponsor-cta" target="_blank">
+                        <span data-es="Compra ahora" data-en="Buy now">Compra ahora</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-card">
+                <h2 class="section-title">
+                    <span data-es="Conoce Nuestro Proceso Creativo" data-en="Dictatorship - Based on a true story"><h2>Dictadura</h2> <p>Basada en hechos reales</p></span>
+                </h2>
+                
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video id="mainVideo" poster="img/Mesa de trabajo 1.png">
+                            <source src="Video/Secuencia 01.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div class="video-overlay" id="videoOverlay">
+                            <button class="play-button" id="playButton">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="video-controls" id="videoControls">
+                            <div class="progress-bar" id="progressBar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="controls-buttons">
+                                <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+                                <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+                                <button id="volumeBtn"><i class="fas fa-volume-up"></i></button>
+                                <button id="fullscreenBtn"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-info">
+                        <h3 data-es="Detrás de Escenas: Proceso de Diseño" data-en="Behind the Scenes: Design Process">Detrás de Escenas: Proceso de Diseño</h3>
+                        <p data-es="Dictadura Una historia basada en hechos reales, donde una casa no siempre es un hogar y las relaciones cada vez son mas complicadas! Generando, angustia, tensión y desesperación.
+
+                        En colaboración con:
+                        @artify_studios_inc
+
+                        Realizado por:
+
+                         @saravenaoh
+                          @sinna_29
+                          @yeraldine_soler
+                        @juancitow_
+
+                        Los sonidos y algunos efectos visuales son reservado a los autores expuestos en los créditos.
+
+                        ©Todos los derechos reservados del Cortometraje" data-en="Dictatorship
+                        A story based on true events, where a house is not always a home, and relationships grow increasingly complicated—generating anguish, tension, and despair.
+
+                        In collaboration with:
+                        @artify_studios_inc
+
+                        Created by:
+                        @saravenaoh
+                        @sinna_29
+                        @yeraldine_soler
+                        @juancitow_
+
+                        The sounds and some visual effects are reserved to the authors listed in the credits.
+
+                        ©All rights reserved for the short film.">"Dictadura" Una historia basada en hechos reales, donde una casa no siempre es un hogar y las relaciones cada vez son mas complicadas! Generando, angustia, tensión y desesperación.
+
+                        En colaboración con:
+                        @artify_studios_inc
+
+                        Realizado por:
+
+                        @saravenaoh
+                        @sinna_29
+                        @yeraldine_soler
+                        @juancitow_
+
+                        Los sonidos y algunos efectos visuales son reservado a los autores expuestos en los créditos.
+
+                        ©Todos los derechos reservados del Cortometraje.</p>
+                        <div class="video-stats">
+                            <span><i class="fas fa-eye"></i> 10K <span data-es="visualizaciones" data-en="views">visualizaciones</span></span>
+                            <span><i class="fas fa-clock"></i> 1:07 <span data-es="min" data-en="min">min</span></span>
+                            <span><i class="fas fa-calendar"></i> <span data-es="Hace 4 semanas" data-en="2 weeks ago">Hace 4 semanas</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="courses-section">
+            <div class="ArtifyBasics-section">
+                <img src="img/Artify Basics.png" alt="Artify_basics" class="Artify_basics">
+            </div>
+
+            <div class="courses-description" id="courses-description" data-es="Aprende las técnicas más avanzadas de modelado 3D, animación y efectos visuales con nuestros cursos especializados impartidos por profesionales de la industria." data-en="Learn the most advanced techniques in 3D modeling, animation, and visual effects with our specialized courses taught by industry professionals.">Aprende las técnicas más avanzadas de modelado 3D, animación y efectos visuales con nuestros cursos especializados impartidos por profesionales de la industria.</p>
+            </div>
+            
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Curso 1: Fundamentos de 3D -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="img/curso 1.png" alt="Fundamentos del 3D - Autodesk Maya">
+                        <div class="course-badge bestseller" data-es="Más vendido" data-en="Bestseller">Más vendido</div>
+                        <div class="course-level intermediate" data-es="Inicial" data-en="initial">Inicial</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 data-es="Fundamentos del 3D - Autodesk Maya" data-en="3D Fundamentals - Autodesk Maya">Fundamentos del 3D - Autodesk Maya</h3>
+                        <p data-es="Descubre el mundo del 3D con Artify Studios. En este curso de Fundamentos de 3D, aprenderás los principios esenciales del modelado, texturizado, iluminación y animación. Diseñado para principiantes, este curso te proporcionará las bases necesarias para comenzar a crear tus propios proyectos en tres dimensiones, utilizando herramientas profesionales y guiado por expertos de la industria creativa." data-en="Discover the world of 3D with Artify Studios. In this 3D Fundamentals course, you’ll learn the essential principles of modeling, texturing, lighting, and animation. Designed for beginners, this course will provide you with the foundational skills needed to start creating your own three-dimensional projects using professional tools and guided by experts from the creative industry.">Descubre el mundo del 3D con Artify Studios. En este curso de Fundamentos de 3D, aprenderás los principios esenciales del modelado, texturizado, iluminación y animación. Diseñado para principiantes, este curso te proporcionará las bases necesarias para comenzar a crear tus propios proyectos en tres dimensiones, utilizando herramientas profesionales y guiado por expertos de la industria creativa.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-number">4.9</span>
+                                <span class="rating-count">(247 <span data-es="reseñas" data-en="reviews">reseñas</span>)</span>
+                            </div>
+                            <div class="course-details">
+                                <span><i class="fas fa-clock"></i> 12 <span data-es="horas" data-en="hours">horas</span></span>
+                                <span><i class="fas fa-users"></i> 1,234 <span data-es="estudiantes" data-en="students">estudiantes</span></span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="current-price">$19</span>
+                            <span class="original-price">$30</span>
+                            <span class="discount">37% OFF</span>
+                        </div>
+                        <a href="https://www.patreon.com/c/artifystudiosinc" class="course-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                           <span data-es="Comprar Ahora" data-en="Buy Now">Comprar Ahora</span>
+                        </a>
+
+                    </div>
+                </div>       
+            </div>
+        </section>
+
+        <!-- Links Section -->
+        <main class="links-section">
+    <h2 class="section-title">
+        <i class="fas fa-link"></i>
+        <span data-es="Enlaces Principales" data-en="Main Links">Enlaces Principales</span>
+    </h2>
+    
+    <div class="links-grid" id="linksGrid">
+        <!-- Enlace 1: Portafolio -->
+        <div class="link-card" data-url="https://portafolioartify.netlify.app/">
+            <div class="link-card-main">
+                <div class="link-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="link-content">
+                    <h3 data-es="Portafolio Completo" data-en="Complete Portfolio">Portafolio Completo</h3>
+                    <p data-es="Explora nuestros mejores trabajos" data-en="Explore our best work">Explora nuestros mejores trabajos</p>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="link-card-actions">
+                <button class="link-share-btn" title="Compartir">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Enlace 2: Servicios -->
+        <div class="link-card" data-url="#servicios">
+            <div class="link-card-main">
+                <div class="link-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="link-content">
+                    <h3 data-es="Servicios de Diseño" data-en="Design Services">Servicios de Diseño</h3>
+                    <p data-es="Branding, UI/UX, Diseño Gráfico" data-en="Branding, UI/UX, Graphic Design">Branding, UI/UX, Diseño Gráfico</p>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="link-card-actions">
+                <button class="link-share-btn" title="Compartir">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Enlace 3: Consulta -->
+        <div class="link-card" data-url="#contacto">
+            <div class="link-card-main">
+                <div class="link-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div class="link-content">
+                    <h3 data-es="Apoya a Artify Studios" data-en="Support Artify Studios">Apoya a Artify Studios</h3>
+                    <p data-es="Agenda una llamada con nuestro equipo" data-en="Schedule a call with our team">Agenda una llamada con nuestro equipo</p>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="link-card-actions">
+                <button class="link-share-btn" title="Compartir">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Enlace 4: Blog -->
+        <div class="link-card" data-url="#blog">
+            <div class="link-card-main">
+                <div class="link-icon">
+                    <i class="fas fa-blog"></i>
+                </div>
+                <div class="link-content">
+                    <h3 data-es="Blog de Diseño" data-en="Design Blog">Blog de Diseño</h3>
+                    <p data-es="Tips y tendencias en diseño" data-en="Tips and trends in design">Tips y tendencias en diseño</p>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="link-card-actions">
+                <button class="link-share-btn" title="Compartir">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Enlace 5: Recursos -->
+        <div class="link-card" data-url="#recursos">
+            <div class="link-card-main">
+                <div class="link-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="link-content">
+                    <h3 data-es="Recursos Gratuitos" data-en="Free Resources">Recursos Gratuitos</h3>
+                    <p data-es="Templates y mockups descargables" data-en="Downloadable templates and mockups">Templates y mockups descargables</p>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="link-card-actions">
+                <button class="link-share-btn" title="Compartir">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Enlace 6: Testimonios -->
+        <div class="link-card" data-url="#testimonios">
+            <div class="link-card-main">
+                <div class="link-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="link-content">
+                    <h3 data-es="Testimonios" data-en="Testimonials">Testimonios</h3>
+                    <p data-es="Lo que dicen nuestros clientes" data-en="What our clients say">Lo que dicen nuestros clientes</p>
+                </div>
+                <div class="link-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="link-card-actions">
+                <button class="link-share-btn" title="Compartir">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Share Modal -->
+<div id="shareModal" class="share-modal">
+    <div class="share-modal-content">
+        <div class="share-modal-header">
+            <h3 data-es="Compartir enlace" data-en="Share link">Compartir enlace</h3>
+            <button class="share-modal-close" id="shareModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="share-modal-body">
+            <div class="share-link-info" id="shareLinkInfo">
+            </div>
+            <div class="share-options">
+                <button class="share-option facebook" onclick="shareOn('facebook')">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </button>
+                <button class="share-option instagram" onclick="shareOn('instagram')">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </button>
+                <button class="share-option linkedin" onclick="shareOn('linkedin')">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </button>
+                <button class="share-option whatsapp" onclick="shareOn('whatsapp')">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="share-option telegram" onclick="shareOn('telegram')">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>Telegram</span>
+                </button>
+                <button class="share-option copy" onclick="shareOn('copy')">
+                    <i class="fas fa-copy"></i>
+                    <span data-es="Copiar enlace" data-en="Copy link">Copiar enlace</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Social Section -->
+        <footer class="social-section">
+            <h3 data-es="Síguenos en redes" data-en="Follow us on social media">Síguenos en redes</h3>
+            
+            <div class="social-links">
+                <a href="https://wa.link/yu2avl" class="social-link whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/juancitow_/" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://discord.gg/U8vkHZRyqS" class="social-link discord" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.youtube.com/@ArtifyStudiosInc" class="social-link youtube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            
+            <div class="contact-info">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:byartifycol@gmail.com">byartifycol@gmail.com</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Cargando...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script/script.js"></script>
+</body>
+</html>
