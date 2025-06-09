@@ -1902,3 +1902,7 @@ justify-content: center;
   margin-left: auto;
   margin-right: auto;
 }
+
+.agency-name { 
+  text-decoration: none;
+}
