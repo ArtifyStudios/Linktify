@@ -955,7 +955,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--background);
+  background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
