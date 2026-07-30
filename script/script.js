@@ -9,7 +9,7 @@ const translations = {
         icon: "fas fa-briefcase",
         title: "Portafolio",
         description: "Explora nuestros mejores trabajos",
-        url: "https://portafolioartify.netlify.app/",
+        url: "https://drive.google.com/drive/folders/1c-eCN7AzfaRMkXGxOI6fCiZbBo3VY6mp?usp=sharing",
       },
       {
         icon: "fas fa-palette",
