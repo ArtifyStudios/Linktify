@@ -955,7 +955,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+<<<<<<< HEAD
   background: var(--background);
+=======
+  background: black;
+>>>>>>> 6d73edcb5e7fc3acd8b47e56e38f19c2194184b1
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1901,4 +1905,11 @@ justify-content: center;
   line-height: 1.6;
   margin-left: auto;
   margin-right: auto;
+<<<<<<< HEAD
+=======
+}
+
+.agency-name { 
+  text-decoration: none;
+>>>>>>> 6d73edcb5e7fc3acd8b47e56e38f19c2194184b1
 }
