@@ -2359,3 +2359,33 @@ video {
 .share-modal {
   z-index: 1000;
 }
+
+
+/* Botón de descarga (Artify Retícula Pro) */
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  background: var(--gradient);
+  color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  transition: var(--transition);
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.5);
+}
+
+.download-btn:active {
+  transform: scale(0.98);
+}
