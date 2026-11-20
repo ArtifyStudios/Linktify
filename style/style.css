@@ -2200,3 +2200,81 @@ video {
     max-width: 1560px;
   }
 }
+
+
+/* =========================================================
+   SPONSOR COMPACTO (menos protagonismo que Artify Retícula Pro)
+   ========================================================= */
+.sponsor-video-section {
+  margin-bottom: 2rem;
+}
+
+.sponsor-video-container {
+  aspect-ratio: 21 / 9;
+}
+
+.sponsor-badge {
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+}
+
+.sponsor-overlay {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+}
+
+.sponsor-info {
+  max-width: 75%;
+  gap: 0.6rem;
+}
+
+.sponsor-logo {
+  width: 32px;
+  height: 32px;
+}
+
+.sponsor-text h3 {
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.sponsor-text p {
+  font-size: 0.7rem;
+}
+
+.sponsor-controls {
+  position: static;
+  gap: 0.35rem;
+}
+
+.sponsor-btn {
+  width: 26px;
+  height: 26px;
+  font-size: 0.7rem;
+}
+
+.sponsor-cta {
+  top: 0.5rem;
+  right: 0.5rem;
+  bottom: auto;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.75rem;
+  min-height: 30px;
+  max-height: 30px;
+}
+
+@media (max-width: 639px) {
+  .sponsor-text p {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sponsor-video-container {
+    aspect-ratio: 3 / 1;
+  }
+}
