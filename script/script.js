@@ -263,47 +263,10 @@ function initializeSponsorVideo() {
 
   if (!sponsorVideo) return
 
-  // Carga diferida: el video pesado se descarga después de que la página ya cargó,
-  // solo cuando está visible, y se pausa al salir de pantalla.
-  const source = sponsorVideo.querySelector("source[data-src]")
-  const saveData = navigator.connection && navigator.connection.saveData
-  let videoLoaded = false
-
-  function ensureSponsorLoaded() {
-    if (videoLoaded) return
-    videoLoaded = true
-    if (source) {
-      source.src = source.dataset.src
-      sponsorVideo.load()
-    }
-  }
-
-  function startSponsorVideo() {
-    if (saveData) return // Ahorro de datos activo: se queda el poster
-    if (!("IntersectionObserver" in window)) {
-      ensureSponsorLoaded()
-      sponsorVideo.play().catch(() => {})
-      return
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          ensureSponsorLoaded()
-          sponsorVideo.play().catch(() => {})
-        } else {
-          sponsorVideo.pause()
-        }
-      },
-      { threshold: 0.25 },
-    )
-    io.observe(sponsorVideo)
-  }
-
-  if (document.readyState === "complete") {
-    startSponsorVideo()
-  } else {
-    window.addEventListener("load", startSponsorVideo, { once: true })
-  }
+  // El video arranca de inmediato (silenciado para que el navegador permita el autoplay)
+  sponsorVideo.play().catch((error) => {
+    console.log("Autoplay prevented:", error)
+  })
 
   // Botón de silencio
   sponsorMuteBtn.addEventListener("click", function () {
@@ -321,10 +284,14 @@ function initializeSponsorVideo() {
 
   // Botón de cerrar
   sponsorCloseBtn.addEventListener("click", () => {
-    sponsorSection.style.animation = "fadeOut 0.5s forwards"
+    sponsorSection.classList.add("sponsor-closing")
     setTimeout(() => {
       sponsorSection.style.display = "none"
-    }, 500)
+      // Detener y liberar el video para no seguir gastando datos
+      sponsorVideo.pause()
+      sponsorVideo.querySelectorAll("source").forEach((src) => src.remove())
+      sponsorVideo.load()
+    }, 300)
     trackEvent("sponsor", "close")
   })
 
@@ -637,7 +604,7 @@ function initializeAnimations() {
   )
 
   const animatedElements = document.querySelectorAll(
-    ".profile-section, .sponsor-video-section, .video-section, .courses-section, .links-section, .social-section",
+    ".profile-section, .video-section, .courses-section, .links-section, .social-section",
   )
   animatedElements.forEach((el) => {
     el.style.opacity = "0"

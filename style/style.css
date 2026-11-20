@@ -2278,3 +2278,84 @@ video {
     aspect-ratio: 3 / 1;
   }
 }
+
+
+/* =========================================================
+   SPONSOR: VENTANA FLOTANTE (se puede cerrar con la X)
+   ========================================================= */
+.sponsor-video-section {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  width: min(260px, 70vw);
+  margin: 0;
+  z-index: 900;
+  animation: sponsorIn 0.5s ease-out 0.4s both;
+}
+
+.sponsor-video-section .sponsor-card {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.sponsor-video-section .sponsor-card:hover {
+  transform: none;
+}
+
+.sponsor-video-container {
+  aspect-ratio: 16 / 9;
+}
+
+.sponsor-text p {
+  display: none;
+}
+
+.sponsor-btn {
+  width: 28px;
+  height: 28px;
+}
+
+.sponsor-video-section.sponsor-closing {
+  animation: sponsorOut 0.3s ease-in forwards;
+}
+
+@keyframes sponsorIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sponsorOut {
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.9);
+  }
+}
+
+@media (min-width: 640px) {
+  .sponsor-video-section {
+    width: 300px;
+    right: 1.5rem;
+    bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .sponsor-video-section {
+    width: 340px;
+  }
+
+  .sponsor-video-container {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* El modal de compartir y las notificaciones quedan por encima */
+.share-modal {
+  z-index: 1000;
+}
