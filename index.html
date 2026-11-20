@@ -23,11 +23,15 @@
     <meta name="twitter:image" content="/og-image.jpg">
     
     <!-- Icons -->
-    <link rel="icon" href="/img/Artify tudios.png">
+    <link rel="icon" href="/img/Artify Studios.png">
     <meta name="theme-color" content="#3b82f6">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <!-- Styles -->
@@ -53,7 +57,7 @@
         <!-- Profile Section -->
         <header class="profile-section">
             <div class="profile-image">
-                <img src="img/Artify Studios.png" alt="Artify Studios" id="profileImg">
+                <img src="img/Artify Studios.png" alt="Artify Studios" id="profileImg" width="128" height="128" fetchpriority="high" decoding="async">
                 
                 <div class="profile-overlay"></div>
             </div>
@@ -92,13 +96,13 @@
                 </div>
                 
                 <div class="sponsor-video-container">
-                    <video id="sponsorVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1542744173-8659d8bde7ef?w=800&h=450&fit=crop">
-                        <source src="Video/Xencelabs Pen Display 16 x Tony Bancroft _ Inspiration is Everywhere  _.mp4" type="video/mp4">
+                    <video id="sponsorVideo" autoplay muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1542744173-8659d8bde7ef?w=800&h=450&fit=crop">
+                        <source data-src="Video/Xencelabs Pen Display 16 x Tony Bancroft _ Inspiration is Everywhere  _.mp4" type="video/mp4">
                     </video>
                     
                     <div class="sponsor-overlay">
                         <div class="sponsor-info">
-                            <img src="img/Xencelabs.png" alt="Xencelabs" class="sponsor-logo">
+                            <img src="img/Xencelabs.png" alt="Xencelabs" class="sponsor-logo" width="40" height="40" loading="lazy" decoding="async">
                             <div class="sponsor-text">
                                 <h3 data-es="Xencelabs" data-en="Xencelabs">Xencelabs</h3>
                                 <p data-es="Desbloquea tu creatividad con la mejor herramienta de diseño." data-en="Unlock your creativity with the best design tool.">Desbloquea tu creatividad con la mejor herramienta de diseño.</p>
@@ -132,7 +136,7 @@
                 
                 <div class="video-container">
                     <div class="video-wrapper">
-                        <video id="mainVideo" poster="img/Mesa de trabajo 1.png">
+                        <video id="mainVideo" preload="none" poster="img/Mesa de trabajo 1.png">
                             <source src="Video/Artify Retícula Pro.mp4" type="video/mp4">
                         </video>
                         
@@ -380,6 +384,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="script/script.js"></script>
+    <script src="script/script.js" defer></script>
 </body>
 </html>

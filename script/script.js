@@ -81,18 +81,22 @@ function initializeApp() {
   // Mostrar loading screen
   showLoadingScreen()
 
-  // Inicializar componentes
-  setTimeout(() => {
+  // Inicializar componentes de inmediato (antes había un retraso artificial de 1s)
+  try {
     initializeLanguageSelector()
     initializeVideoPlayer()
     initializeSponsorVideo()
     initializeProfileImage()
     renderLinks()
-    initializeShareModal() // Agregar esta línea
+    initializeShareModal()
     initializeAnimations()
     addClickEffects()
-    hideLoadingScreen()
-  }, 1000)
+  } catch (err) {
+    console.error("Error al inicializar:", err)
+  } finally {
+    // Siempre se oculta la pantalla de carga, aunque algo falle
+    requestAnimationFrame(hideLoadingScreen)
+  }
 }
 
 // Loading Screen
@@ -106,7 +110,7 @@ function hideLoadingScreen() {
   loadingScreen.classList.add("hidden")
   setTimeout(() => {
     loadingScreen.style.display = "none"
-  }, 500)
+  }, 300)
 }
 
 // Selector de idioma
@@ -259,10 +263,47 @@ function initializeSponsorVideo() {
 
   if (!sponsorVideo) return
 
-  // Autoplay con manejo de errores
-  sponsorVideo.play().catch((error) => {
-    console.log("Autoplay prevented:", error)
-  })
+  // Carga diferida: el video pesado se descarga después de que la página ya cargó,
+  // solo cuando está visible, y se pausa al salir de pantalla.
+  const source = sponsorVideo.querySelector("source[data-src]")
+  const saveData = navigator.connection && navigator.connection.saveData
+  let videoLoaded = false
+
+  function ensureSponsorLoaded() {
+    if (videoLoaded) return
+    videoLoaded = true
+    if (source) {
+      source.src = source.dataset.src
+      sponsorVideo.load()
+    }
+  }
+
+  function startSponsorVideo() {
+    if (saveData) return // Ahorro de datos activo: se queda el poster
+    if (!("IntersectionObserver" in window)) {
+      ensureSponsorLoaded()
+      sponsorVideo.play().catch(() => {})
+      return
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          ensureSponsorLoaded()
+          sponsorVideo.play().catch(() => {})
+        } else {
+          sponsorVideo.pause()
+        }
+      },
+      { threshold: 0.25 },
+    )
+    io.observe(sponsorVideo)
+  }
+
+  if (document.readyState === "complete") {
+    startSponsorVideo()
+  } else {
+    window.addEventListener("load", startSponsorVideo, { once: true })
+  }
 
   // Botón de silencio
   sponsorMuteBtn.addEventListener("click", function () {
@@ -579,24 +620,13 @@ function buyCourse(courseId) {
 
 // Animaciones
 function initializeAnimations() {
-  // Declare gtag and fbq as global variables
-  window.gtag =
-    window.gtag ||
-    (() => {
-      ;(window.gtag.q = window.gtag.q || []).push(arguments)
-    })
-  window.fbq =
-    window.fbq ||
-    (() => {
-      ;(window.fbq.q = window.fbq.q || []).push(arguments)
-    })
-
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.style.opacity = "1"
           entry.target.style.transform = "translateY(0)"
+          observer.unobserve(entry.target)
         }
       })
     },
@@ -660,19 +690,17 @@ function createRippleEffect(e, element) {
 
 // Analytics y tracking
 function trackEvent(category, action) {
-  console.log(`Event tracked: ${category} - ${action}`)
-
   // Integración con Google Analytics (si está disponible)
-  if (typeof gtag !== "undefined") {
-    gtag("event", action, {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", action, {
       event_category: category,
       event_label: action,
     })
   }
 
   // Integración con Facebook Pixel (si está disponible)
-  if (typeof fbq !== "undefined") {
-    fbq("track", "CustomEvent", {
+  if (typeof window.fbq === "function") {
+    window.fbq("track", "CustomEvent", {
       category: category,
       action: action,
     })
@@ -682,7 +710,7 @@ function trackEvent(category, action) {
 // Manejo de errores
 window.addEventListener("error", (e) => {
   console.error("Error en la aplicación:", e.error)
-  trackEvent("error", e.error.message)
+  trackEvent("error", (e.error && e.error.message) || "unknown")
 })
 
 // Optimización de rendimiento
@@ -720,37 +748,7 @@ window.addEventListener("load", () => {
   // Inicializar lazy loading
   initializeLazyLoading()
 
-  // Precargar imágenes críticas
-  preloadCriticalImages()
-
-  // Optimizar rendimiento
-  optimizePerformance()
 })
-
-function preloadCriticalImages() {
-  const criticalImages = ["https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=128&h=128&fit=crop&crop=face"]
-
-  criticalImages.forEach((src) => {
-    const img = new Image()
-    img.src = src
-  })
-}
-
-function optimizePerformance() {
-  // Reducir la frecuencia de eventos de scroll
-  const debouncedScroll = debounce(() => {
-    // Lógica de scroll optimizada
-  }, 16)
-
-  window.addEventListener("scroll", debouncedScroll)
-
-  // Optimizar resize events
-  const debouncedResize = debounce(() => {
-    // Lógica de resize optimizada
-  }, 250)
-
-  window.addEventListener("resize", debouncedResize)
-}
 
 // Service Worker para PWA (opcional)
 if ("serviceWorker" in navigator) {
