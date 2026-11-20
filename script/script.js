@@ -91,6 +91,7 @@ function initializeApp() {
     initializeShareModal()
     initializeAnimations()
     addClickEffects()
+    initializePromo()
   } catch (err) {
     console.error("Error al inicializar:", err)
   } finally {
@@ -781,3 +782,59 @@ const additionalStyles = `
 const styleSheet = document.createElement("style")
 styleSheet.textContent = additionalStyles
 document.head.appendChild(styleSheet)
+
+
+// Anuncio: 15% de descuento en Artify Retícula Pro (hasta el 30 de noviembre de 2026)
+function initializePromo() {
+  const modal = document.getElementById("promoModal")
+  if (!modal) return
+
+  // Vence el 30 de noviembre de 2026 a las 23:59 (hora del visitante)
+  const deadline = new Date(2026, 10, 30, 23, 59, 59)
+  if (new Date() > deadline) {
+    modal.remove()
+    return
+  }
+
+  // Si ya lo cerró en esta sesión, no se vuelve a mostrar
+  const storageKey = "promoReticulaProDismissed"
+  try {
+    if (sessionStorage.getItem(storageKey) === "1") return
+  } catch (e) {}
+
+  const closeBtn = document.getElementById("promoClose")
+  const dismissBtn = document.getElementById("promoDismiss")
+  const cta = document.getElementById("promoCta")
+
+  function openPromo() {
+    modal.classList.add("active")
+    modal.setAttribute("aria-hidden", "false")
+    document.body.style.overflow = "hidden"
+    closeBtn.focus({ preventScroll: true })
+    trackEvent("promo", "impression")
+  }
+
+  function closePromo() {
+    if (!modal.classList.contains("active")) return
+    modal.classList.remove("active")
+    modal.setAttribute("aria-hidden", "true")
+    document.body.style.overflow = ""
+    try {
+      sessionStorage.setItem(storageKey, "1")
+    } catch (e) {}
+    trackEvent("promo", "close")
+  }
+
+  closeBtn.addEventListener("click", closePromo)
+  dismissBtn.addEventListener("click", closePromo)
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closePromo()
+  })
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePromo()
+  })
+  cta.addEventListener("click", () => trackEvent("promo", "cta_click"))
+
+  // Aparece poco después de cargar la página
+  setTimeout(openPromo, 1200)
+}
